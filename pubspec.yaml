@@ -23,8 +23,8 @@ environment:
 dependencies:
   flutter:
    sdk: flutter  
-  firebase_core: ^0.2.5  # add dependency for Firebase Core
   provider:
+  share: ^0.6.2+1
   
 
 
