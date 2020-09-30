@@ -8,7 +8,6 @@ class NotationList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Notations dummyNotation = Provider.of(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Minhas Anotações'),
@@ -20,8 +19,10 @@ class NotationList extends StatelessWidget {
                 AppRoutes.USER_FORM,
               );
             },
+
           ),
         ],
+          automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
         itemCount: dummyNotation.count,

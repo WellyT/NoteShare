@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">65953042704-u94hd4luvqr7a48in51b6if3vlpdl49t.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://noteshare-622dd.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">65953042704</string>
+    <string name="google_api_key" translatable="false">AIzaSyBFA4_JdH9rcgwSb2Ahnq4hLIW5YXARNjs</string>
+    <string name="google_app_id" translatable="false">1:65953042704:android:4ba04735d59f641aed1595</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBFA4_JdH9rcgwSb2Ahnq4hLIW5YXARNjs</string>
+    <string name="google_storage_bucket" translatable="false">noteshare-622dd.appspot.com</string>
+    <string name="project_id" translatable="false">noteshare-622dd</string>
+</resources>

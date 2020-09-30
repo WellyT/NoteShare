@@ -4,6 +4,7 @@ import 'package:noteshare/routes/routes.dart';
 import 'package:noteshare/view/notation_list.dart';
 import 'package:noteshare/view/user_form.dart';
 import 'package:provider/provider.dart';
+import 'package:noteshare/view/welcome.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,9 +28,11 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         routes: {
+          AppRoutes.SPLASH_PAGE: (_) => WelcomeScreen(),
           AppRoutes.HOME: (_) => NotationList(),
           AppRoutes.USER_FORM: (_) => UserForm()
         },
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
