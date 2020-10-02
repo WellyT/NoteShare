@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:noteshare/model/Notation.dart';
-import 'package:noteshare/providers/notations.dart';
+import 'package:noteshare/model/notation.dart';
+import 'package:noteshare/providers/notations_provider.dart';
 import 'package:noteshare/routes/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
 class NotationTile extends StatelessWidget {
-  final Notation notation;
-
-  const NotationTile(this.notation);
-
+  final NotationItem notation;
+  final int index;
+  final NotationsProvider notationsProvider;
+  NotationTile(this.notation, this.notationsProvider, this.index);
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -24,7 +24,11 @@ class NotationTile extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   AppRoutes.USER_FORM,
-                  arguments: notation,
+                  arguments: {
+                    'notation': notation,
+                    'notationsProvider': notationsProvider,
+                    'index': index
+                  },
                 );
               },
             ),
@@ -41,8 +45,8 @@ class NotationTile extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (ctx) => AlertDialog(
-                    title: Text('Delete notation'),
-                    content: Text('You sure?'),
+                    title: Text('Deletar anotação'),
+                    content: Text('Tem certeza?'),
                     actions: <Widget>[
                       FlatButton(
                         onPressed: () {
@@ -52,8 +56,8 @@ class NotationTile extends StatelessWidget {
                       ),
                       FlatButton(
                         onPressed: () {
-                          Provider.of<Notations>(context, listen: false)
-                              .remove(notation);
+                          notationsProvider.remove(index);
+                          notationsProvider.notifyListeners();
                           Navigator.of(context).pop();
                         },
                         child: Text('Yes'),

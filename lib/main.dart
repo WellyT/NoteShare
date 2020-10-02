@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noteshare/providers/notations.dart';
+import 'package:noteshare/providers/notations_provider.dart';
 import 'package:noteshare/routes/routes.dart';
 import 'package:noteshare/view/notation_list.dart';
 import 'package:noteshare/view/user_form.dart';
@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (ctx) => Notations(),
+        ChangeNotifierProvider<NotationsProvider>.value(
+          value: NotationsProvider(),
         )
       ],
       child: MaterialApp(

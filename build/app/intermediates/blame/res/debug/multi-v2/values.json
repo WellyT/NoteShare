@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\JC\\Desktop\\NoteShare-master\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\JC\\Desktop\\NoteShare\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\JC\\Desktop\\NoteShare-master\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\JC\\Desktop\\NoteShare\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,198,308,389,493,601,721,820",
+                        "endColumns": "142,109,80,103,107,119,98,75",
+                        "endOffsets": "193,303,384,488,596,716,815,891"
+                    },
+                    "to": {
+                        "startLines": "104,105,106,107,108,109,110,111",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "7758,7901,8011,8092,8196,8304,8424,8523",
+                        "endColumns": "142,109,80,103,107,119,98,75",
+                        "endOffsets": "7896,8006,8087,8191,8299,8419,8518,8594"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\JC\\Desktop\\NoteShare\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -37,23 +54,6 @@
                         "startOffsets": "5287,6465",
                         "endColumns": "67,166",
                         "endOffsets": "5350,6627"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\JC\\Desktop\\NoteShare-master\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,198,308,389,493,601,721,820",
-                        "endColumns": "142,109,80,103,107,119,98,75",
-                        "endOffsets": "193,303,384,488,596,716,815,891"
-                    },
-                    "to": {
-                        "startLines": "104,105,106,107,108,109,110,111",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "7758,7901,8011,8092,8196,8304,8424,8523",
-                        "endColumns": "142,109,80,103,107,119,98,75",
-                        "endOffsets": "7896,8006,8087,8191,8299,8419,8518,8594"
                     }
                 },
                 {

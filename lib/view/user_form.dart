@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:noteshare/model/Notation.dart';
-import 'package:noteshare/providers/notations.dart';
-import 'package:provider/provider.dart';
+import 'package:noteshare/model/notation.dart';
+import 'package:noteshare/providers/notations_provider.dart';
 
 class UserForm extends StatefulWidget {
   @override
@@ -12,9 +11,15 @@ class _UserFormState extends State<UserForm> {
   final _form = GlobalKey<FormState>();
 
   final Map<String, String> _formData = {};
-
-  void _loadFormData(Notation notation) {
+  bool isEdit = false;
+  dynamic index;
+  NotationsProvider notationsProvider;
+  void _loadFormData(NotationItem notation, dynamic index) {
+    print(index);
+    print('tt');
     if (notation != null) {
+      isEdit = true;
+      this.index = index;
       _formData['id'] = notation.id;
       _formData['anotation'] = notation.anotation;
     }
@@ -24,16 +29,20 @@ class _UserFormState extends State<UserForm> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final Notation notation = ModalRoute.of(context).settings.arguments;
-
-    _loadFormData(notation);
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    final NotationItem notation = arguments['notation'];
+    print(arguments['notationsProvider']);
+    notationsProvider = arguments['notationsProvider'];
+    _loadFormData(notation, arguments['index']);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Insert any notation'),
+        title: Text(() {
+          return isEdit ? 'Editar Nota' : 'Adicionar Nota';
+        }()),
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -43,14 +52,14 @@ class _UserFormState extends State<UserForm> {
             children: <Widget>[
               TextFormField(
                 initialValue: _formData['anotation'],
-                decoration: InputDecoration(labelText: 'Insert your notation'),
+                decoration: InputDecoration(labelText: 'Adicione uma nota'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'An error has ocourred';
                   }
 
                   if (value.trim().length < 3) {
-                    return 'Notation canot be less than 3';
+                    return 'Nota não pode ser menor que 3';
                   }
                   return null;
                 },
@@ -71,12 +80,14 @@ class _UserFormState extends State<UserForm> {
 
                           if (isValid) {
                             _form.currentState.save();
-                            Provider.of<Notations>(context, listen: false).put(
-                              Notation(
-                                id: _formData['id'],
-                                anotation: _formData['anotation'],
-                              ),
-                            );
+                            if (isEdit) {
+                              notationsProvider.edit(
+                                  _formData['anotation'], index);
+                            } else {
+                              notationsProvider.add(
+                                  _formData['id'], _formData['anotation']);
+                            }
+                            notationsProvider.notifyListeners();
                             Navigator.of(context).pop();
                           }
                         }),
