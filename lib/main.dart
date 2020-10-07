@@ -1,3 +1,4 @@
+import 'package:custom_splash/custom_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:noteshare/providers/notations_provider.dart';
 import 'package:noteshare/routes/routes.dart';
@@ -15,7 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MaterialApp(
+        home: CustomSplash(
+          backGroundColor: const Color.fromARGB(242, 242, 242, 255),
+          imagePath: 'assets/icon/logo.png',
+          home: HomeStart(),
+          duration: 3000,
+          type: CustomSplashType.StaticDuration,
+        )
+
+    );
+  }
+}
+class HomeStart extends StatelessWidget {
+  const  HomeStart({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return  MultiProvider(
       providers: [
         ChangeNotifierProvider<NotationsProvider>.value(
           value: NotationsProvider(),

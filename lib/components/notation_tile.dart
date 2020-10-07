@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
 class NotationTile extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final NotationItem notation;
   final int index;
   final NotationsProvider notationsProvider;
@@ -15,6 +16,7 @@ class NotationTile extends StatelessWidget {
     return ListTile(
       subtitle: Text(notation.anotation),
       trailing: Container(
+        key: _scaffoldKey,
         width: 150,
         child: Row(
           children: <Widget>[
@@ -50,17 +52,17 @@ class NotationTile extends StatelessWidget {
                     actions: <Widget>[
                       FlatButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          Navigator.of(ctx).pop();
                         },
-                        child: Text('Cancel'),
+                        child: Text('Cancelar'),
                       ),
                       FlatButton(
                         onPressed: () {
                           notationsProvider.remove(index);
                           notationsProvider.notifyListeners();
-                          Navigator.of(context).pop();
+                          Navigator.of(ctx).pop();
                         },
-                        child: Text('Yes'),
+                        child: Text('Sim'),
                       ),
                     ],
                   ),
